@@ -1,7 +1,9 @@
+import { Header } from "../components/shared";
+
 const LandingPage: React.FC = () => {
     return (
         <>
-        dddddddddd
+         <Header text="Covid-19 Tracker" />
         </>
     )
 }
