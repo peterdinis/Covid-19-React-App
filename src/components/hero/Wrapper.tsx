@@ -8,7 +8,9 @@ const Wrapper: React.FC = () => {
       </div>
 
       <div className="bg-slate-50 rounded border-gray-300  dark:border-gray-700 border-dashed border-2 h-24">
-        <h4 className="text-center mt-8 text-2xl font-bold">All Deaths</h4>
+        <h4 className="text-center mt-8 text-2xl font-bold">
+            <a href="/deaths">All Deaths</a>
+        </h4>
       </div>
 
       <div className="bg-slate-50 rounded border-gray-300  dark:border-gray-700 border-dashed border-2 h-24">
