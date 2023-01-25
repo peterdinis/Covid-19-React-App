@@ -2,7 +2,9 @@ import { LandingPage } from "./pages";
 
 function App() {
   return (
-    <LandingPage />
+    <>
+      <LandingPage />
+    </>
   )
 }
 
