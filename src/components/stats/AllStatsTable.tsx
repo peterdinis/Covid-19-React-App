@@ -26,44 +26,40 @@ const AllStatsTable: React.FC = () => {
               </tr>
             </thead>
             <tbody className="w-full">
-              <tr className="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100">
-                {data &&
-                  data.map((item: any) => {
-                    return (
-                      <>
-                        <td className="pl-4 cursor-pointer">
-                          <div className="flex items-center">
-                            <div className="pl-4">
-                              <p className="font-medium">
-                                {item.active}
-                              </p>
-                            </div>
+              {data &&
+                data.map((item: any) => {
+                  return (
+                    <tr className="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100">
+                      <td className="pl-4 cursor-pointer">
+                        <div className="flex items-center">
+                          <div className="pl-4">
+                            <p className="font-medium">{item.active}</p>
                           </div>
-                        </td>
-                        <td className="pl-12">
-                          <p className="text-sm font-medium leading-none text-gray-800">
-                            {item.country}
-                          </p>
-                        </td>
-                        <td className="pl-12">
-                          <p className="font-medium">32/47</p>
-                          <p className="text-xs leading-3 text-gray-600 mt-2">
-                            {item.deaths}
-                          </p>
-                        </td>
-                        <td className="pl-20">
-                          <p className="font-medium">{item.population}</p>
-                        </td>
-                        <td className="pl-20">
-                          <p className="font-medium">{item.recovered}</p>
-                        </td>
-                        <td className="pl-16">
-                            <p className="font-medium">{item.tests}</p>
-                        </td>
-                      </>
-                    );
-                  })}
-              </tr>
+                        </div>
+                      </td>
+                      <td className="pl-12">
+                        <p className="text-sm font-medium leading-none text-gray-800">
+                          {item.country}
+                        </p>
+                      </td>
+                      <td className="pl-12">
+                        <p className="font-medium">32/47</p>
+                        <p className="text-xs leading-3 text-gray-600 mt-2">
+                          {item.deaths}
+                        </p>
+                      </td>
+                      <td className="pl-20">
+                        <p className="font-medium">{item.population}</p>
+                      </td>
+                      <td className="pl-20">
+                        <p className="font-medium">{item.recovered}</p>
+                      </td>
+                      <td className="pl-16">
+                        <p className="font-medium">{item.tests}</p>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
         </div>
