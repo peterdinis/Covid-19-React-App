@@ -1,10 +1,12 @@
-import { LandingPage } from "./pages";
+import { Routes, Route } from "react-router-dom";
+import { AllStatsPage, LandingPage } from "./pages";
 
 function App() {
   return (
-    <>
-      <LandingPage />
-    </>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/stats" element={<AllStatsPage />} />
+    </Routes>
   )
 }
 
