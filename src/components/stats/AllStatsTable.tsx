@@ -44,7 +44,6 @@ const AllStatsTable: React.FC = () => {
                         </p>
                       </td>
                       <td className="pl-12">
-                        <p className="font-medium">32/47</p>
                         <p className="text-xs leading-3 text-gray-600 mt-2">
                           {item.deaths}
                         </p>
