@@ -2,6 +2,7 @@ import { Header, Layout } from "../shared";
 import { useQuery } from "@tanstack/react-query";
 import * as api from "../../api/queries/statsQueries";
 import StatsHeader from "./StatsHeader";
+import ScrollToTop from "../../hooks/useScroll";
 
 const AllStatsTable: React.FC = () => {
   const { data, isError } = useQuery(["countries"], api.getAllCountriesStats);
@@ -64,6 +65,7 @@ const AllStatsTable: React.FC = () => {
           </table>
         </div>
       </div>
+      <ScrollToTop />
     </Layout>
   );
 };
