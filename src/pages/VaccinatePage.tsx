@@ -1,8 +1,8 @@
+import { VaccinateTable } from "../components/vaccinates";
+
 const VaccinatePage: React.FC = () => {
     return (
-        <>
-        ddd
-        </>
+        <VaccinateTable />
     )
 }
 
