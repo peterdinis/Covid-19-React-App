@@ -1,8 +1,8 @@
+import { VariantsTable } from "../components/variants";
+
 const VariantsPage: React.FC = () => {
     return (
-        <>
-        VARIANTS
-        </>
+        <VariantsTable />
     )
 }
 
