@@ -4,6 +4,9 @@ import * as api from "../../api/queries/statsQueries";
 import StatsHeader from "./StatsHeader";
 
 const AllStatsTable: React.FC = () => {
+  const { data, isError } = useQuery(["countries"], api.getAllCountriesStats);
+
+  console.log(data);
 
   return (
     <Layout>
