@@ -1,7 +1,7 @@
 import React from "react";
 
 export const useDate = () => {
-    const locale = 'sk';
+    const locale = 'en';
     const [today, setDate] = React.useState(new Date());
   
     React.useEffect(() => {
