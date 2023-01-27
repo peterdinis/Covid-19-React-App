@@ -1,13 +1,22 @@
-import { Header, Layout } from "../shared";
+import { FallBackRenderer, FallbackLoader, Header, Layout } from "../shared";
 import { useQuery } from "@tanstack/react-query";
 import * as api from "../../api/queries/statsQueries";
 import StatsHeader from "./StatsHeader";
 import ScrollToTop from "../../hooks/useScroll";
 
 const AllStatsTable: React.FC = () => {
-  const { data, isError } = useQuery(["countries"], api.getAllCountriesStats);
+  const { data, isError, isLoading } = useQuery(
+    ["countries"],
+    api.getAllCountriesStats
+  );
 
-  console.log(data);
+  if (isError) {
+    return <FallBackRenderer error="Something went wrong" />;
+  }
+
+  if (isLoading) {
+    return <FallbackLoader />;
+  }
 
   return (
     <Layout>
@@ -44,7 +53,6 @@ const AllStatsTable: React.FC = () => {
                         </p>
                       </td>
                       <td className="pl-12">
-                        <p className="font-medium">32/47</p>
                         <p className="text-xs leading-3 text-gray-600 mt-2">
                           {item.deaths}
                         </p>
