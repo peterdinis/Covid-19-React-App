@@ -9,7 +9,7 @@ const Wrapper: React.FC = () => {
 
       <div className="bg-slate-50 rounded border-gray-300  dark:border-gray-700 border-dashed border-2 h-24">
         <h4 className="text-center mt-8 text-2xl font-bold">
-            <a href="/variatns">All Variants</a>
+            <a href="/variants">All Variants</a>
         </h4>
       </div>
 
