@@ -1,13 +1,11 @@
-import { FallBackRenderer, FallbackLoader, Header, Layout } from "../shared";
+import { FallBackRenderer, FallbackLoader, GoHomeButton, Header, Layout } from "../shared";
 import { useQuery } from "@tanstack/react-query";
 import * as api from "../../api/queries/statsQueries";
 import StatsHeader from "./StatsHeader";
 import ScrollToTop from "../../hooks/useScroll";
 import { IStats } from "../../api/types/StatTypes";
-import { useNavigate } from "react-router-dom";
 
 const AllStatsTable: React.FC = () => {
-  const navigate = useNavigate();
   const { data, isError, isLoading } = useQuery(
     ["countries"],
     api.getAllCountriesStats
@@ -21,14 +19,10 @@ const AllStatsTable: React.FC = () => {
     return <FallbackLoader />;
   }
 
-  const goBackToHome = () => {
-    navigate("/");
-  }
-
   return (
     <Layout>
       <Header text="All Stats about covid" />
-      <button onClick={goBackToHome} className="mt-4 ml-8 rounded-lg bg-blue-300 text-black font-bold p-2">Go to main page</button>
+      <GoHomeButton />
       <div className="w-full sm:px-6">
         <StatsHeader />
         <div className="bg-white shadow px-4 md:px-10 pt-4 md:pt-7 pb-5 overflow-y-auto">
