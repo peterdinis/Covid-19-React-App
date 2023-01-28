@@ -4,7 +4,6 @@ import {
   LandingPage,
   NotFoundPage,
   VaccinatePage,
-  VariantsPage,
 } from "./pages";
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/vaccinate" element={<VaccinatePage />} />
       <Route path="/stats" element={<AllStatsPage />} />
-      <Route path="/variants" element={<VariantsPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
