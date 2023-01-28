@@ -3,8 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 import * as api from "../../api/queries/statsQueries";
 import StatsHeader from "./StatsHeader";
 import ScrollToTop from "../../hooks/useScroll";
+import { IStats } from "../../api/types/StatTypes";
+import { useNavigate } from "react-router-dom";
 
 const AllStatsTable: React.FC = () => {
+  const navigate = useNavigate();
   const { data, isError, isLoading } = useQuery(
     ["countries"],
     api.getAllCountriesStats
@@ -18,9 +21,14 @@ const AllStatsTable: React.FC = () => {
     return <FallbackLoader />;
   }
 
+  const goBackToHome = () => {
+    navigate("/");
+  }
+
   return (
     <Layout>
       <Header text="All Stats about covid" />
+      <button onClick={goBackToHome} className="mt-4 ml-8 rounded-lg bg-blue-300 text-black font-bold p-2">Go to main page</button>
       <div className="w-full sm:px-6">
         <StatsHeader />
         <div className="bg-white shadow px-4 md:px-10 pt-4 md:pt-7 pb-5 overflow-y-auto">
@@ -36,39 +44,39 @@ const AllStatsTable: React.FC = () => {
               </tr>
             </thead>
             <tbody className="w-full">
-              {data &&
-                data.map((item: any) => {
-                  return (
-                    <tr className="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100">
-                      <td className="pl-4 cursor-pointer">
-                        <div className="flex items-center">
-                          <div className="pl-4">
-                            <p className="font-medium">{item.active}</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="pl-12">
-                        <p className="text-sm font-medium leading-none text-gray-800">
-                          {item.country}
-                        </p>
-                      </td>
-                      <td className="pl-12">
-                        <p className="text-xs leading-3 text-gray-600 mt-2">
-                          {item.deaths}
-                        </p>
-                      </td>
-                      <td className="pl-20">
-                        <p className="font-medium">{item.population}</p>
-                      </td>
-                      <td className="pl-20">
-                        <p className="font-medium">{item.recovered}</p>
-                      </td>
-                      <td className="pl-16">
-                        <p className="font-medium">{item.tests}</p>
-                      </td>
-                    </tr>
-                  );
-                })}
+            {data &&
+          data.map((item: IStats) => {
+            return (
+              <tr className="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100">
+                <td className="pl-4 cursor-pointer">
+                  <div className="flex items-center">
+                    <div className="pl-4">
+                      <p className="text-sm font-medium">{item.active}</p>
+                    </div>
+                  </div>
+                </td>
+                <td className="pl-12">
+                  <p className="text-sm font-medium leading-none text-gray-800">
+                    {item.country}
+                  </p>
+                </td>
+                <td className="pl-12">
+                  <p className="text-sm leading-3 text-red-800 font-bold mt-2">
+                    {item.deaths}
+                  </p>
+                </td>
+                <td className="pl-20">
+                  <p className="text-sm font-medium">{item.population}</p>
+                </td>
+                <td className="pl-20">
+                  <p className="text-green-800 text-sm font-medium">{item.recovered}</p>
+                </td>
+                <td className="pl-16">
+                  <p className="text-sm font-medium">{item.tests}</p>
+                </td>
+              </tr>
+            );
+          })}  
             </tbody>
           </table>
         </div>
