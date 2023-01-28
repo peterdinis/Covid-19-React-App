@@ -1,4 +1,10 @@
-import { FallBackRenderer, FallbackLoader, GoHomeButton, Header, Layout } from "../shared";
+import {
+  FallBackRenderer,
+  FallbackLoader,
+  GoHomeButton,
+  Header,
+  Layout,
+} from "../shared";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -7,6 +13,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useQuery } from "@tanstack/react-query";
 import * as api from "../../api/queries/vaccinateQueries";
 import "./VaccinateTable.css";
+import { IVaccinate } from "../../api/types/VaccinateTypes";
 
 const VaccinateTable: React.FC = () => {
   const { data, isError, isLoading } = useQuery(
@@ -31,7 +38,7 @@ const VaccinateTable: React.FC = () => {
       <section className="bg-white py-8">
         <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
           {data.data &&
-            data.data.map((item: any) => {
+            data.data.map((item: IVaccinate) => {
               return (
                 <>
                   <div className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col bg-white rounded-lg">
@@ -46,15 +53,19 @@ const VaccinateTable: React.FC = () => {
                             aria-controls="panel1a-content"
                             id="panel1a-header"
                           >
-                            <span className="font-bold text-lg">Basic Info</span>
+                            <span className="font-bold text-lg">
+                              Basic Info
+                            </span>
                           </AccordionSummary>
                           <AccordionDetails>
                             <Typography>
-                              <span className="font-bold">Description</span>: <span className="fitText">{item.details}</span>
+                              <span className="font-bold">Description</span>:{" "}
+                              <span className="fitText">{item.details}</span>
                             </Typography>
                             <hr />
                             <Typography>
-                              <span className="font-bold">Mechanism</span>: {item.mechanism}
+                              <span className="font-bold">Mechanism</span>:{" "}
+                              {item.mechanism}
                             </Typography>
                           </AccordionDetails>
                         </Accordion>
